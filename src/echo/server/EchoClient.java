@@ -1,3 +1,6 @@
+/*
+ * 클라이언트 채팅 GUI
+ * */
 package echo.server;
 
 import java.awt.BorderLayout;
@@ -82,7 +85,6 @@ public class EchoClient extends JFrame{
 			// 접속이 완료되었으니 대화를 나누기 위해 스트림을 얻어놓기
 			buffr=new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 			buffw=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"));
-			
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

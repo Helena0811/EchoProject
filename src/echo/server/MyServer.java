@@ -19,16 +19,15 @@ public class MyServer {
 	// 대화를 나누기 전에 접속을 알려주기 위한 객체, 아직 대화는 나눌 수 없음
 	ServerSocket server;
 	
-	// 서버는 클라이언트가 찾아오기를 기다리므로, 클라이언트와 약속한 포트번호만 보유하면 됨
+	// 서버는 클라이언트가 찾아오기를 기다리므로, 클라이언트 IP와 약속한 포트번호만 보유하면 됨
 	// 원칙) 포트번호는 자유롭게 정하면 됨
 	// 예외1) 0~1023 이미 시스템이 점유하고 있음
-	// 예외2) 유명한 프로그램들은 피해 설정		ex) Oracle 1521, MySql 3306
+	// 예외2) 유명한 프로그램들은 피해서 설정		ex) Oracle 1521, MySql 3306
 	int port=8888;
 	
 	// ServerSocket의 accept()에 의해 반환됨
 	Socket socket;
 	
-
 	public MyServer() {
 		try {
 			//ServerSocket(int port) 
@@ -43,7 +42,11 @@ public class MyServer {
 			// -> 여러 클라이언트의 수행도 가능하게 하려면 무한 루프로 돌려야 함
 			// 방문하는 클라이언트마다 한 글자씩만 입력받고 대체함
 			while(true){
-				// 대화용 통신 도구
+				// 대화용 통신 도구 = 소켓
+				/*
+				 * Listens for a connection to be made to this socket and accepts it. 
+				 * The method blocks until a connection is made.
+				 * */
 				socket=server.accept();
 				System.out.println("접속자 발견");
 				
